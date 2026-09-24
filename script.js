@@ -1,18 +1,23 @@
+import { perguntas } from './js/perguntas.js';
+import { aleatorio, nome } from './js/aleatorio.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
 
     // Alternar tema Dark/Light
-    themeToggleBtn.addEventListener('click', () => {
-        body.classList.toggle('light-theme');
-        body.classList.toggle('dark-theme');
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            body.classList.toggle('dark-theme');
 
-        if (body.classList.contains('light-theme')) {
-            themeToggleBtn.textContent = 'Modo Escuro';
-        } else {
-            themeToggleBtn.textContent = 'Modo Claro';
-        }
-    });
+            if (body.classList.contains('light-theme')) {
+                themeToggleBtn.textContent = 'Modo Escuro';
+            } else {
+                themeToggleBtn.textContent = 'Modo Claro';
+            }
+        });
+    }
 
     // Animação de Scroll Suave para links internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -47,4 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+
+    console.log(`Projeto carregado para o veículo: ${nome}`);
+    console.log(`Perguntas registradas: ${perguntas.length}`);
 });
